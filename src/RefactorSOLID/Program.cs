@@ -3,12 +3,14 @@
 Console.WriteLine("=== GENERACIÓN DE REPORTE ===");
 Console.WriteLine();
 
-var reporteService = new ReporteService();
+var datosService = new DatosService();
+var generadorReporteService = new GeneradorReporteService();
+var correoService = new CorreoService();
+var archivoService = new ArchivoService();
 
-reporteService.ConsultarDatos();
-reporteService.GenerarReporte();
-reporteService.EnviarCorreo();
-reporteService.GuardarArchivo();
+var reporteService = new ReporteService(datosService, generadorReporteService, correoService, archivoService);
+
+reporteService.ProcesarReporte();
 
 Console.WriteLine();
 Console.WriteLine("Proceso completado.");
